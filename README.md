@@ -1,2 +1,0 @@
-# Salon-de-belleza
-uñitas
