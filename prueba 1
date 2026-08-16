@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glamour Studio - Salón de Belleza</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <nav>
+            <h2 class="logo">Glamour Studio</h2>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECCIÓN PRINCIPAL -->
+    <section id="inicio" class="hero">
+        <div class="hero-text">
+            <h1>Resalta tu belleza natural</h1>
+            <p>En Glamour Studio cuidamos de ti. Cortes, color, uñas y más.</p>
+            <a href="#contacto" class="btn">Agenda tu cita</a>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="servicios">
+        <h2>Nuestros Servicios</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>💇 Corte & Peinado</h3>
+                <p>Cortes modernos, peinados para eventos y tratamientos capilares.</p>
+                <span>Desde $15</span>
+            </div>
+            <div class="card">
+                <h3>💅 Uñas & Manicure</h3>
+                <p>Uñas acrílicas, gel, semipermanente y nail art.</p>
+                <span>Desde $10</span>
+            </div>
+            <div class="card">
+                <h3>💄 Maquillaje</h3>
+                <p>Maquillaje social, novias, 15 años y sesión de fotos.</p>
+                <span>Desde $25</span>
+            </div>
+            <div class="card">
+                <h3>✨ Faciales</h3>
+                <p>Limpieza facial, hidratación y rejuvenecimiento.</p>
+                <span>Desde $20</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria" class="galeria">
+        <h2>Resultados que hablan</h2>
+        <div class="fotos">
+            <div class="foto"></div>
+            <div class="foto"></div>
+            <div class="foto"></div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contacto">
+        <h2>Agenda tu cita</h2>
+        <p>📍 Av. Principal 123, Guayaquil<br>
+           📱 WhatsApp: 099 999 9999<br>
+           🕒 Lun - Sáb: 9am - 7pm</p>
+        <a href="https://wa.me/593999999999" class="btn">Escríbenos por WhatsApp</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Glamour Studio. Hecho con 💖</p>
+    </footer>
+
+</body>
+</html>
