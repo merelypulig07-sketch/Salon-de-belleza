@@ -3,129 +3,674 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Personal</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <title>Mi Portafolio</title>
+    <style>
+        /* =============================================
+           VARIABLES — TONOS MORADOS
+        ============================================= */
+        :root {
+            --morado-oscuro: #2D1B47;
+            --morado-medio: #5B21B6;
+            --morado-claro: #8B5CF6;
+            --morado-suave: #C4B5FD;
+            --fondo: #FAF8FC;
+            --blanco: #FFFFFF;
+            --texto: #1F2937;
+            --texto-claro: #6B7280;
+            --sombra: 0 4px 12px rgba(91, 33, 182, 0.12);
+            --sombra-hover: 0 8px 24px rgba(91, 33, 182, 0.18);
+            --borde: #EDE9FE;
+        }
+
+        /* =============================================
+           REINICIO Y BASE
+        ============================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--fondo);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--morado-oscuro);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--morado-medio), var(--morado-claro));
+            border-radius: 3px;
+        }
+
+        section {
+            padding: 70px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* =============================================
+           NAVEGACIÓN
+        ============================================= */
+        header {
+            background: linear-gradient(90deg, var(--morado-oscuro), var(--morado-medio));
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navegacion {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--blanco);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .enlaces-nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        .enlaces-nav a {
+            color: var(--blanco);
+            font-weight: 500;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .enlaces-nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .hamburguesa {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* =============================================
+           SECCIÓN HERO / INICIO
+        ============================================= */
+        .hero {
+            background: linear-gradient(135deg, var(--morado-oscuro), var(--morado-medio), var(--morado-claro));
+            color: white;
+            text-align: center;
+            padding: 100px 20px 120px;
+            margin-top: 0;
+            max-width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 35px;
+        }
+
+        .btn-primario {
+            display: inline-block;
+            background: white;
+            color: var(--morado-medio);
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primario:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        /* =============================================
+           ACERCA DE MÍ
+        ============================================= */
+        .contenido-acercade {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .foto-perfil {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--morado-claro), var(--morado-medio));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: var(--sombra);
+        }
+
+        .texto-acercade p {
+            margin-bottom: 20px;
+            color: var(--texto-claro);
+            font-size: 1.05rem;
+        }
+
+        .lista-datos {
+            padding-left: 20px;
+        }
+
+        .lista-datos li {
+            padding: 6px 0;
+            color: var(--texto);
+            font-weight: 500;
+        }
+
+        /* =============================================
+           HABILIDADES CON BARRAS
+        ============================================= */
+        .contenedor-habilidades {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .tarjeta-habilidad {
+            background: var(--blanco);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--sombra);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .tarjeta-habilidad:hover {
+            box-shadow: var(--sombra-hover);
+            transform: translateY(-4px);
+        }
+
+        .tarjeta-habilidad span {
+            display: block;
+            font-weight: 600;
+            color: var(--morado-oscuro);
+            margin-bottom: 10px;
+        }
+
+        .contenedor-barra {
+            height: 10px;
+            background: var(--borde);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .barra-progreso {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--morado-medio), var(--morado-claro));
+            border-radius: 5px;
+            transition: width 1.8s ease-out;
+        }
+
+        /* =============================================
+           PROYECTOS — TARJETAS
+        ============================================= */
+        .contenedor-proyectos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .tarjeta-proyecto {
+            background: var(--blanco);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tarjeta-proyecto:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--sombra-hover);
+        }
+
+        .cabecera-proyecto {
+            height: 140px;
+            background: linear-gradient(135deg, var(--morado-medio), var(--morado-claro));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .cuerpo-proyecto {
+            padding: 22px;
+        }
+
+        .cuerpo-proyecto h3 {
+            color: var(--morado-oscuro);
+            margin-bottom: 12px;
+        }
+
+        .cuerpo-proyecto p {
+            color: var(--texto-claro);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .enlace-proyecto {
+            color: var(--morado-medio);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .enlace-proyecto:hover {
+            gap: 10px;
+        }
+
+        /* =============================================
+           CONTACTO
+        ============================================= */
+        .contenedor-contacto {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 40px;
+        }
+
+        .info-contacto {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .item-contacto {
+            background: var(--blanco);
+            padding: 18px 22px;
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--texto);
+        }
+
+        .item-contacto span:first-child {
+            color: var(--morado-claro);
+            font-size: 1.2rem;
+        }
+
+        .formulario-contacto {
+            background: var(--blanco);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--sombra);
+        }
+
+        .grupo-form {
+            margin-bottom: 18px;
+        }
+
+        .grupo-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: var(--morado-oscuro);
+        }
+
+        .grupo-form input,
+        .grupo-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--borde);
+            border-radius: 8px;
+            font-size: 0.98rem;
+            transition: border-color 0.3s;
+        }
+
+        .grupo-form input:focus,
+        .grupo-form textarea:focus {
+            outline: none;
+            border-color: var(--morado-claro);
+        }
+
+        .grupo-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-enviar {
+            background: linear-gradient(90deg, var(--morado-medio), var(--morado-claro));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.2s;
+        }
+
+        .btn-enviar:hover {
+            opacity: 0.92;
+            transform: translateY(-2px);
+        }
+
+        .mensaje-validacion {
+            margin-top: 12px;
+            font-weight: 500;
+        }
+
+        .error { color: #DC2626; }
+        .exito { color: #16A34A; }
+
+        /* =============================================
+           FOOTER
+        ============================================= */
+        footer {
+            background: var(--morado-oscuro);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 20px;
+        }
+
+        .enlaces-footer {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 15px;
+        }
+
+        .enlaces-footer a {
+            color: var(--morado-suave);
+            font-size: 0.95rem;
+        }
+
+        .enlaces-footer a:hover {
+            color: white;
+        }
+
+        /* =============================================
+           RESPONSIVE
+        ============================================= */
+        @media (max-width: 900px) {
+            .contenido-acercade,
+            .contenedor-contacto {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .foto-perfil { margin: 0 auto; }
+        }
+
+        @media (max-width: 768px) {
+            .enlaces-nav {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--morado-oscuro);
+                padding: 20px;
+                gap: 15px;
+                display: none;
+            }
+            .enlaces-nav.activo { display: flex; }
+            .hamburguesa { display: block; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- HEADER con Navegación -->
+    <!-- ================= NAVEGACIÓN ================= -->
     <header>
         <nav class="navegacion">
-            <div class="logo">MiPortafolio</div>
-            <ul class="enlaces" id="enlacesMenu">
+            <div class="logo">Mi Portafolio</div>
+            <button class="hamburguesa" id="btnMenu">☰</button>
+            <ul class="enlaces-nav" id="menuPrincipal">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#acerca">Acerca de mí</a></li>
                 <li><a href="#habilidades">Habilidades</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
-            <button class="hamburguesa" id="btnHamburguesa">☰</button>
         </nav>
     </header>
 
-    <main>
-        <!-- Sección Inicio -->
-        <section id="inicio" class="seccion hero">
-            <h1>¡Hola! Soy Tu Nombre</h1>
-            <p>Estudiante de Ingeniería Civil / Desarrollador Web</p>
-            <a href="#contacto" class="btn">Contáctame</a>
-        </section>
+    <!-- ================= INICIO / HERO ================= -->
+    <section id="inicio" class="hero">
+        <h1>¡Hola! Soy [Tu Nombre]</h1>
+        <p>Estudiante de Ingeniería Civil / Desarrollador Web</p>
+        <a href="#contacto" class="btn-primario">¡Contáctame!</a>
+    </section>
 
-        <!-- Sección Acerca de Mí -->
-        <section id="acerca" class="seccion">
-            <h2>Acerca de Mí</h2>
-            <div class="contenido-acercade">
+    <!-- ================= ACERCA DE MÍ ================= -->
+    <section id="acerca">
+        <h2>Acerca de Mí</h2>
+        <div class="contenido-acercade">
+            <div class="foto-perfil">👤</div>
+            <div class="texto-acercade">
                 <p>Soy una persona apasionada por la tecnología y la ingeniería. Busco combinar conocimientos técnicos con creatividad para desarrollar soluciones prácticas. Me interesa el diseño, la programación y los proyectos de infraestructura.</p>
-                <ul>
+                <ul class="lista-datos">
                     <li>📍 Guayaquil, Ecuador</li>
                     <li>🎓 Estudiante de Ingeniería Civil</li>
                     <li>💻 Aprendiendo Desarrollo Web</li>
                 </ul>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Sección Habilidades con Barras Animadas -->
-        <section id="habilidades" class="seccion">
-            <h2>Habilidades</h2>
-            <div class="contenedor-habilidades">
-                <div class="habilidad">
-                    <span>HTML / CSS</span>
-                    <div class="barra"><div class="progreso" data-nivel="85">85%</div></div>
-                </div>
-                <div class="habilidad">
-                    <span>JavaScript</span>
-                    <div class="barra"><div class="progreso" data-nivel="70">70%</div></div>
-                </div>
-                <div class="habilidad">
-                    <span>Diseño Técnico / AutoCAD</span>
-                    <div class="barra"><div class="progreso" data-nivel="80">80%</div></div>
-                </div>
-                <div class="habilidad">
-                    <span>Ingeniería y Dibujo Técnico</span>
-                    <div class="barra"><div class="progreso" data-nivel="75">75%</div></div>
+    <!-- ================= HABILIDADES ================= -->
+    <section id="habilidades">
+        <h2>Mis Habilidades</h2>
+        <div class="contenedor-habilidades">
+            <div class="tarjeta-habilidad">
+                <span>HTML / CSS — 85%</span>
+                <div class="contenedor-barra">
+                    <div class="barra-progreso" data-nivel="85"></div>
                 </div>
             </div>
-        </section>
+            <div class="tarjeta-habilidad">
+                <span>JavaScript — 70%</span>
+                <div class="contenedor-barra">
+                    <div class="barra-progreso" data-nivel="70"></div>
+                </div>
+            </div>
+            <div class="tarjeta-habilidad">
+                <span>Diseño Técnico / AutoCAD — 80%</span>
+                <div class="contenedor-barra">
+                    <div class="barra-progreso" data-nivel="80"></div>
+                </div>
+            </div>
+            <div class="tarjeta-habilidad">
+                <span>Ingeniería y Dibujo Técnico — 75%</span>
+                <div class="contenedor-barra">
+                    <div class="barra-progreso" data-nivel="75"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Sección Proyectos con Tarjetas -->
-        <section id="proyectos" class="seccion">
-            <h2>Proyectos</h2>
-            <div class="contenedor-proyectos">
-                <div class="tarjeta-proyecto">
+    <!-- ================= PROYECTOS ================= -->
+    <section id="proyectos">
+        <h2>Mis Proyectos</h2>
+        <div class="contenedor-proyectos">
+            <div class="tarjeta-proyecto">
+                <div class="cabecera-proyecto">Proyecto 1</div>
+                <div class="cuerpo-proyecto">
                     <h3>Sitio Web de Portafolio</h3>
                     <p>Portafolio personal responsive con HTML, CSS y JavaScript.</p>
                     <a href="#" class="enlace-proyecto">Ver más →</a>
                 </div>
-                <div class="tarjeta-proyecto">
+            </div>
+            <div class="tarjeta-proyecto">
+                <div class="cabecera-proyecto">Proyecto 2</div>
+                <div class="cuerpo-proyecto">
                     <h3>Planos y Diseño Estructural</h3>
                     <p>Documentación técnica y planos realizados en AutoCAD.</p>
                     <a href="#" class="enlace-proyecto">Ver más →</a>
                 </div>
-                <div class="tarjeta-proyecto">
+            </div>
+            <div class="tarjeta-proyecto">
+                <div class="cabecera-proyecto">Proyecto 3</div>
+                <div class="cuerpo-proyecto">
                     <h3>Guía de Seguridad en Construcción</h3>
                     <p>Material informativo sobre normativas y prevención de riesgos.</p>
                     <a href="#" class="enlace-proyecto">Ver más →</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Sección Contacto con Formulario -->
-        <section id="contacto" class="seccion">
-            <h2>Contacto</h2>
-            <div class="contenedor-contacto">
-                <div class="info-contacto">
-                    <p>✉️ tu.email@ejemplo.com</p>
-                    <p>📞 +593 999 999 999</p>
-                    <p>📍 Guayaquil, Ecuador</p>
+    <!-- ================= CONTACTO ================= -->
+    <section id="contacto">
+        <h2>Contáctame</h2>
+        <div class="contenedor-contacto">
+            <div class="info-contacto">
+                <div class="item-contacto">
+                    <span>✉️</span>
+                    <span>tu.email@ejemplo.com</span>
                 </div>
-                <form id="formularioContacto" class="formulario">
-                    <div class="campo">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" required>
-                        <span class="error"></span>
-                    </div>
-                    <div class="campo">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                        <span class="error"></span>
-                    </div>
-                    <div class="campo">
-                        <label for="mensaje">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" required></textarea>
-                        <span class="error"></span>
-                    </div>
-                    <button type="submit" class="btn">Enviar Mensaje</button>
-                    <p id="mensajeConfirmacion" class="confirmacion"></p>
-                </form>
+                <div class="item-contacto">
+                    <span>📞</span>
+                    <span>+593 999 999 999</span>
+                </div>
+                <div class="item-contacto">
+                    <span>📍</span>
+                    <span>Guayaquil, Ecuador</span>
+                </div>
             </div>
-        </section>
-    </main>
+            <form class="formulario-contacto" id="formContacto">
+                <div class="grupo-form">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" required>
+                </div>
+                <div class="grupo-form">
+                    <label for="correo">Email</label>
+                    <input type="email" id="correo" required>
+                </div>
+                <div class="grupo-form">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" required></textarea>
+                </div>
+                <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+                <div id="estadoForm" class="mensaje-validacion"></div>
+            </form>
+        </div>
+    </section>
 
-    <!-- Pie de Página -->
+    <!-- ================= PIE DE PÁGINA ================= -->
     <footer>
-        <p>&copy; 2026 Tu Nombre y Apellido — Todos los derechos reservados</p>
+        <div class="enlaces-footer">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>&copy; 2026 [Tu Nombre]. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="js/app.js"></script>
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        // ---------- MENÚ HAMBURGUESA ----------
+        const btnMenu = document.getElementById('btnMenu');
+        const menuPrincipal = document.getElementById('menuPrincipal');
+
+        btnMenu.addEventListener('click', () => {
+            menuPrincipal.classList.toggle('activo');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('#menuPrincipal a').forEach(enlace => {
+            enlace.addEventListener('click', () => {
+                menuPrincipal.classList.remove('activo');
+            });
+        });
+
+        // ---------- ANIMACIÓN DE BARRAS DE HABILIDADES ----------
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.barra-progreso').forEach(barra => {
+                const nivel = barra.getAttribute('data-nivel');
+                setTimeout(() => {
+                    barra.style.width = nivel + '%';
+                }, 400);
+            });
+        });
+
+        // ---------- VALIDACIÓN FORMULARIO ----------
+        const form = document.getElementById('formContacto');
+        const nombre = document.getElementById('nombre');
+        const correo = document.getElementById('correo');
+        const mensaje = document.getElementById('mensaje');
+        const estado = document.getElementById('estadoForm');
+
+        function validarCorreo(valor) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor);
+        }
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            estado.className = 'mensaje-validacion';
+
+            if (nombre.value.trim().length < 3) {
+                estado.textContent = '⚠️ El nombre debe tener al menos 3 caracteres.';
+                estado.classList.add('error');
+                return;
+            }
+            if (!validarCorreo(correo.value)) {
+                estado.textContent = '⚠️ Ingresa un correo electrónico válido.';
+                estado.classList.add('error');
+                return;
+            }
+            if (mensaje.value.trim().length < 10) {
+                estado.textContent = '⚠️ El mensaje debe tener al menos 10 caracteres.';
+                estado.classList.add('error');
+                return;
+            }
+
+            estado.textContent = '✅ ¡Mensaje enviado con éxito!';
+            estado.classList.add('exito');
+            form.reset();
+        });
+    </script>
+
 </body>
 </html>
