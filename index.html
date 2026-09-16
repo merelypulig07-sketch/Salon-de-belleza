@@ -3,83 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glamour Studio - Salón de Belleza</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Portafolio Personal</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-    <!-- ENCABEZADO -->
+    <!-- HEADER con Navegación -->
     <header>
-        <nav>
-            <h2 class="logo">Glamour Studio</h2>
-            <ul>
+        <nav class="navegacion">
+            <div class="logo">MiPortafolio</div>
+            <ul class="enlaces" id="enlacesMenu">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#acerca">Acerca de mí</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
+            <button class="hamburguesa" id="btnHamburguesa">☰</button>
         </nav>
     </header>
 
-    <!-- SECCIÓN PRINCIPAL -->
-    <section id="inicio" class="hero">
-        <div class="hero-text">
-            <h1>Resalta tu belleza natural</h1>
-            <p>En Glamour Studio cuidamos de ti. Cortes, color, uñas y más.</p>
-            <a href="#contacto" class="btn">Agenda tu cita</a>
-        </div>
-    </section>
+    <main>
+        <!-- Sección Inicio -->
+        <section id="inicio" class="seccion hero">
+            <h1>¡Hola! Soy Tu Nombre</h1>
+            <p>Estudiante de Ingeniería Civil / Desarrollador Web</p>
+            <a href="#contacto" class="btn">Contáctame</a>
+        </section>
 
-    <!-- SERVICIOS -->
-    <section id="servicios" class="servicios">
-        <h2>Nuestros Servicios</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>💇 Corte & Peinado</h3>
-                <p>Cortes modernos, peinados para eventos y tratamientos capilares.</p>
-                <span>Desde $15</span>
+        <!-- Sección Acerca de Mí -->
+        <section id="acerca" class="seccion">
+            <h2>Acerca de Mí</h2>
+            <div class="contenido-acercade">
+                <p>Soy una persona apasionada por la tecnología y la ingeniería. Busco combinar conocimientos técnicos con creatividad para desarrollar soluciones prácticas. Me interesa el diseño, la programación y los proyectos de infraestructura.</p>
+                <ul>
+                    <li>📍 Guayaquil, Ecuador</li>
+                    <li>🎓 Estudiante de Ingeniería Civil</li>
+                    <li>💻 Aprendiendo Desarrollo Web</li>
+                </ul>
             </div>
-            <div class="card">
-                <h3>💅 Uñas & Manicure</h3>
-                <p>Uñas acrílicas, gel, semipermanente y nail art.</p>
-                <span>Desde $10</span>
-            </div>
-            <div class="card">
-                <h3>💄 Maquillaje</h3>
-                <p>Maquillaje social, novias, 15 años y sesión de fotos.</p>
-                <span>Desde $25</span>
-            </div>
-            <div class="card">
-                <h3>✨ Faciales</h3>
-                <p>Limpieza facial, hidratación y rejuvenecimiento.</p>
-                <span>Desde $20</span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- GALERÍA -->
-    <section id="galeria" class="galeria">
-        <h2>Resultados que hablan</h2>
-        <div class="fotos">
-            <div class="foto"></div>
-            <div class="foto"></div>
-            <div class="foto"></div>
-        </div>
-    </section>
+        <!-- Sección Habilidades con Barras Animadas -->
+        <section id="habilidades" class="seccion">
+            <h2>Habilidades</h2>
+            <div class="contenedor-habilidades">
+                <div class="habilidad">
+                    <span>HTML / CSS</span>
+                    <div class="barra"><div class="progreso" data-nivel="85">85%</div></div>
+                </div>
+                <div class="habilidad">
+                    <span>JavaScript</span>
+                    <div class="barra"><div class="progreso" data-nivel="70">70%</div></div>
+                </div>
+                <div class="habilidad">
+                    <span>Diseño Técnico / AutoCAD</span>
+                    <div class="barra"><div class="progreso" data-nivel="80">80%</div></div>
+                </div>
+                <div class="habilidad">
+                    <span>Ingeniería y Dibujo Técnico</span>
+                    <div class="barra"><div class="progreso" data-nivel="75">75%</div></div>
+                </div>
+            </div>
+        </section>
 
-    <!-- CONTACTO -->
-    <section id="contacto" class="contacto">
-        <h2>Agenda tu cita</h2>
-        <p>📍 Av. Principal 123, Guayaquil<br>
-           📱 WhatsApp: 099 999 9999<br>
-           🕒 Lun - Sáb: 9am - 7pm</p>
-        <a href="https://wa.me/593999999999" class="btn">Escríbenos por WhatsApp</a>
-    </section>
+        <!-- Sección Proyectos con Tarjetas -->
+        <section id="proyectos" class="seccion">
+            <h2>Proyectos</h2>
+            <div class="contenedor-proyectos">
+                <div class="tarjeta-proyecto">
+                    <h3>Sitio Web de Portafolio</h3>
+                    <p>Portafolio personal responsive con HTML, CSS y JavaScript.</p>
+                    <a href="#" class="enlace-proyecto">Ver más →</a>
+                </div>
+                <div class="tarjeta-proyecto">
+                    <h3>Planos y Diseño Estructural</h3>
+                    <p>Documentación técnica y planos realizados en AutoCAD.</p>
+                    <a href="#" class="enlace-proyecto">Ver más →</a>
+                </div>
+                <div class="tarjeta-proyecto">
+                    <h3>Guía de Seguridad en Construcción</h3>
+                    <p>Material informativo sobre normativas y prevención de riesgos.</p>
+                    <a href="#" class="enlace-proyecto">Ver más →</a>
+                </div>
+            </div>
+        </section>
 
-    <!-- FOOTER -->
+        <!-- Sección Contacto con Formulario -->
+        <section id="contacto" class="seccion">
+            <h2>Contacto</h2>
+            <div class="contenedor-contacto">
+                <div class="info-contacto">
+                    <p>✉️ tu.email@ejemplo.com</p>
+                    <p>📞 +593 999 999 999</p>
+                    <p>📍 Guayaquil, Ecuador</p>
+                </div>
+                <form id="formularioContacto" class="formulario">
+                    <div class="campo">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                        <span class="error"></span>
+                    </div>
+                    <div class="campo">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error"></span>
+                    </div>
+                    <div class="campo">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" required></textarea>
+                        <span class="error"></span>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensaje</button>
+                    <p id="mensajeConfirmacion" class="confirmacion"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
     <footer>
-        <p>© 2026 Glamour Studio. Hecho con 💖</p>
+        <p>&copy; 2026 Tu Nombre y Apellido — Todos los derechos reservados</p>
     </footer>
 
+    <script src="js/app.js"></script>
 </body>
 </html>
