@@ -1,4 +1,3 @@
-// ---------- MENÚ HAMBURGUESA ----------
 const btnMenu = document.getElementById('btnMenu');
 const menuPrincipal = document.getElementById('menuPrincipal');
 
@@ -12,7 +11,6 @@ document.querySelectorAll('#menuPrincipal a').forEach(enlace => {
     });
 });
 
-// ---------- ANIMACIÓN DE BARRAS ----------
 window.addEventListener('load', () => {
     document.querySelectorAll('.barra-progreso').forEach(barra => {
         const nivel = barra.getAttribute('data-nivel');
@@ -22,7 +20,6 @@ window.addEventListener('load', () => {
     });
 });
 
-// ---------- VALIDACIÓN FORMULARIO ----------
 const form = document.getElementById('formContacto');
 const nombre = document.getElementById('nombre');
 const correo = document.getElementById('correo');
